@@ -1,7 +1,7 @@
 
 
 /**
- * Callbacks
+ * Promises
  * 
  * 0. Obter um usuário.
  * 1. Obter o número de telefone do usuário pelo id.
@@ -25,33 +25,53 @@ function obterUsuario() {
 
 function obterTelefone(idUsuario) {
     return new Promise( (resolve, reject) => {
-        return resolve({
-            telefone: "92839-4432",
-            ddd: "21"
-        })
+        try {
+            return resolve({
+                telefone: "92839-4432",
+                ddd: "21"
+            })
+        } catch (error) {
+            return reject(new Error('Deu ruim de verdade!', error));
+        }
+        
     });
 }
 
 function obterEndereco(idUsuario) {
     return new Promise( (resolve, reject) => {
-        return resolve({
-            rua: "Rua Irapua",
-            numero: "542",
-            bairro: "Penha Circular"
-        })
+        try {
+            return resolve({
+                rua: "Rua Irapua",
+                numero: "542",
+                bairro: "Penha Circular"
+            })
+        } catch (error) {
+            return reject(new Error('Deu ruim de verdade!', error));
+        }
     });
 }
 
 // Pego a promise.
 const usuarioPromise = obterUsuario();
 
+var dadosUsuario = {};
+
 // Trato a promise.
 usuarioPromise
-.then( (res) => {
-    console.log(res)
+.then( (res1) => {
+    dadosUsuario.usuario = res1;
+    return obterTelefone(res1)
+    .then( (res2) => {
+        dadosUsuario.telefone = res2;
+        return obterEndereco(res2)
+        .then( (res3) => {
+            dadosUsuario.endereco = res3
+            console.log(dadosUsuario)
+        })
+    })
 })
-.catch( (rej) => {
-    console.error('Deu ruim: ', rej);
+.catch( (error1) => {
+    console.error('Deu ruim: ', error1);
 });
 
 // obterUsuario((error, usuario) => {
