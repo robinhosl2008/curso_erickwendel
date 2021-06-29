@@ -1,0 +1,21 @@
+{
+  "name": "curso_erickwendel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robinhosl2008/curso_erickwendel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robinhosl2008/curso_erickwendel/issues"
+  },
+  "homepage": "https://github.com/robinhosl2008/curso_erickwendel#readme"
+}
