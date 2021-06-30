@@ -9,6 +9,15 @@ Array.prototype.meuMap = function (callback) {
     return novoArrayMapeado;
 }
 
+Array.prototype.pegaNome = function (callback) {
+    const novoArray = [];
+    for(let pessoa of this){
+        const resultado = callback(pessoa);
+        novoArray.push(resultado);
+    }
+    return novoArray;
+}
+
 async function main() {
     try {
         const resultado = await service.obterPessoas('a');
@@ -30,9 +39,13 @@ async function main() {
         // const names = resultado.results.map((pessoa) => pessoa.name);
         // console.timeEnd('new-map');
 
-        const names = resultado.results.meuMap((pessoa, key) => {
-            return `${key + 1} - ${pessoa.name}`;
-        })
+        // const names = resultado.results.meuMap((pessoa, key) => {
+        //     return `${key + 1} - ${pessoa.name}`;
+        // })
+
+        const names = resultado.results.pegaNome((pessoa) => {
+            return pessoa.name;
+        });
 
         console.log('nomes:', names);
     } catch (error) {
