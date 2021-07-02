@@ -20,8 +20,7 @@ describe('Teste Star Wars.', () => {
         assert.deepStrictEqual(resposta.results[0].hasOwnProperty('name'), true, 'Não retornou o parâmetro "name" corretamente!');
     });
 
-    it('Deve retornar no parâmetro "name" o nome "R2-D2".', async () => {
-        console.log(resposta.results[0].name)
+    it('Deve retornar no parâmetro "name" e seu valor "R2-D2".', async () => {
         assert.deepStrictEqual(resposta.results[0].name, 'R2-D2', 'O nome não é o esperado "R2-D2".')
     });
 });
