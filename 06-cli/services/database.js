@@ -24,10 +24,10 @@ class Database {
 
     async cadastrar(heroi) {
         const dados = await this.obterDadosArquivo();
-        const id = heroi.id <= 2 ? heroi.id : Date.now();
+        const id = heroi.id == 1 ? heroi.id : Date.now();
 
+        heroi.id = id;
         const heroiComId = {
-            id,
             ...heroi
         }
 
