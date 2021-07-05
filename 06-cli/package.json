@@ -4,9 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -R nyan"
+    "test": "mocha -R nyan",
+    "coverage": "nyc yarn test"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^9.0.2"
+  },
+  "dependencies": {
+    "nyc": "^15.1.0"
+  }
 }

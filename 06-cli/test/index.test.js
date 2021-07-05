@@ -15,6 +15,7 @@ describe('Manipulação de herois - Create.', () => {
     it('Cadastrar um heroi.', async () => {
         const confirmacao = await database.cadastrar(DEFAULT_ITEM_CADASTRAR);
         assert.deepStrictEqual(confirmacao, true);
+
     });
 
 });
@@ -49,4 +50,15 @@ describe('Manipulação de herois - Read.', () => {
         assert.ok(resultado, []);
     });
 });
+
+describe('Manipulação de herois - Delete.', () => {
+
+    it('Deve remover um heroi por ID.', async () => {
+        const esperado = true;
+        var resultado = await database.remover(DEFAULT_ITEM_CADASTRAR.id);
+
+        assert.deepStrictEqual(resultado, esperado, 'O registro não foi removido.')
+    })
+
+})
 

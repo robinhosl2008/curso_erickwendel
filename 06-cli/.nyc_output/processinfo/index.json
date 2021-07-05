@@ -1,0 +1,1 @@
+{"processes":{"5982bdc9-1a15-4b6b-9c92-bd28a0cef0da":{"parent":null,"children":["a039bbc1-e371-4e1e-a405-173814f0b0ee"]},"a039bbc1-e371-4e1e-a405-173814f0b0ee":{"parent":"5982bdc9-1a15-4b6b-9c92-bd28a0cef0da","children":[]}},"files":{"/Users/robson.lourenco/Projetos/Robson/curso_erickwendel/06-cli/services/database.js":["a039bbc1-e371-4e1e-a405-173814f0b0ee"]},"externalIds":{}}
