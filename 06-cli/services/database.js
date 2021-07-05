@@ -55,6 +55,28 @@ class Database {
         dados.splice(indice, 1);
         return await this.escreverArquivo(dados);
     }
+
+    async atualizar(id, obj) {
+        if(!id || !obj){
+            throw Error('Atributos faltando!');
+        }
+
+        const dados = await this.obterDadosArquivo();
+        const indice = dados.findIndex(item => item.id === parseInt(id));
+        if(indice === -1){
+            throw Error('Usuário não encontrado.');
+        }
+
+        const novoDados = dados.map((item) => {
+            if(item.id === id){
+                item.nome = obj.nome;
+                item.poder = obj.poder;
+            }
+            return item;
+        });
+
+        return await this.escreverArquivo(novoDados);
+    }
 }
 
 module.exports = new Database();
