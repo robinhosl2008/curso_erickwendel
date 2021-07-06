@@ -31,8 +31,7 @@ class Database {
             ...heroi
         }
 
-        dados.push(heroiComId)
-
+        dados.push(heroiComId);
         return await this.escreverArquivo(dados);
     }
 
@@ -67,15 +66,15 @@ class Database {
             throw Error('Usuário não encontrado.');
         }
 
-        const novoDados = dados.map((item) => {
-            if(item.id === id){
+        const novosDados = dados.map((item) => {
+            if(item.id == id){
                 item.nome = obj.nome;
                 item.poder = obj.poder;
             }
             return item;
         });
 
-        return await this.escreverArquivo(novoDados);
+        return await this.escreverArquivo(novosDados);
     }
 }
 
