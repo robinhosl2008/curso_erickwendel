@@ -3,22 +3,13 @@
 
 class Heroi {
     constructor({
-        id, 
+        id,
         nome, 
         poder
     }) {
-        this.id = id;
-        this.nome = nome;
-        this.poder = poder;
-    }
-
-    async newHeroi() {
-        const a = {
-            this.id,
-            this.nome,
-            this.poder
-        };
-        return 
+        this.id = id,
+        this.nome = nome,
+        this.poder = poder
     }
     
 }
