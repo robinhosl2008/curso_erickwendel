@@ -12,6 +12,7 @@ class MongoDB extends ICrud {
         this._driver = null
         this._herois = null
         this.connection = null
+        this.defineModel();
         this.connect();
     }
 
@@ -25,7 +26,7 @@ class MongoDB extends ICrud {
     }
 
     defineModel() {
-        this._herois = new Mongoose.Schema({
+        const heroiSchema = new Mongoose.Schema({
             nome: {
                 type: String,
                 required: true
@@ -36,7 +37,7 @@ class MongoDB extends ICrud {
             }
         })
         
-        const model = Mongoose.model('herois', heroiSchema);
+        this._herois = Mongoose.model('herois', heroiSchema);
     }
 
     connect() {
@@ -52,10 +53,11 @@ class MongoDB extends ICrud {
     }
 
     async create(item) {
-        return await model.create({
-            nome: item.nome,
-            poder: item.poder
-        });
+        return this._herois.create(item);
+    }
+
+    async read(item, skip=0, limit=10) {
+        return this._herois.find(item).skip(skip).limit(limit);
     }
 }
 

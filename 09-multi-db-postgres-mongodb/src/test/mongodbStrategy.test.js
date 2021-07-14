@@ -13,6 +13,17 @@ describe('MongoDB Suite de testes', () => {
         const resultado = await context.isConnected();
         assert.ok(resultado, 'Conectado');
     })
+
+    it('Cadastrar um heroi', async () => {
+        const { nome, poder } = await context.create(MOCK_HEROI);
+        assert.deepStrictEqual({ nome, poder }, MOCK_HEROI, 'Problema ao tentar cadastrar um heroi!');
+    })
+
+    it.only('Listando herois', async () => {
+        const [{ nome, poder }] = await context.read({ nome: MOCK_HEROI.nome });
+        console.log({ nome, poder })
+        assert.deepStrictEqual({ nome, poder }, MOCK_HEROI, 'Não retornou nenhum heroi.');
+    })
 })
 
 
@@ -27,11 +38,11 @@ describe('MongoDB Suite de testes', () => {
 //         assert.deepStrictEqual(result, true, 'Teste de conexão não passou!');
 //     })
 
-//     it('Cadastrar um heroi', async () => {
-//         const resultado = await context.create(MOCK_HEROI);
-//         delete resultado.id;
-//         assert.deepStrictEqual(resultado, MOCK_HEROI, 'Problema ao tentar cadastrar um heroi!');
-//     })
+    // it('Cadastrar um heroi', async () => {
+    //     const resultado = await context.create(MOCK_HEROI);
+    //     delete resultado.id;
+    //     assert.deepStrictEqual(resultado, MOCK_HEROI, 'Problema ao tentar cadastrar um heroi!');
+    // })
 
 //     it('Listar todos os herois', async () =>{ 
 //         const resultado = await context.read();
