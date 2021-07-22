@@ -5,8 +5,8 @@ var app = {};
 var idHeroi = '';
 
 const MOCK_HEROI = {
-    nome: 'Teste100',
-    poder: 'Teste100'
+    nome: 'Robson',
+    poder: 'Inteligência'
 };
 
 describe('Suite de teste da API.', function() {
@@ -109,9 +109,9 @@ describe('Suite de teste da API.', function() {
         });
 
         const statusCode = res.statusCode;
-        const dados = JSON.parse(res.payload);
+        const dados = res.payload;
 
         assert.ok(statusCode === 200);
-        assert.deepStrictEqual(dados.message, 'Heroi removido com sucesso');
+        assert.deepStrictEqual(dados, 'Heroi removido com sucesso');
     })
 })
