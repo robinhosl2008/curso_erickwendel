@@ -83,6 +83,22 @@ describe('Suite de teste da API.', function() {
         assert.deepStrictEqual(statusCode, 200, 'Não veio o status code 200.');
         
         var [data] = JSON.parse(resultado.payload);
-        assert.ok(data.nome === MOCK_HEROI.nome);
+        assert.ok(data.nome === MOCK_HEROI.nome, true);
+    })
+
+    it('PATCH - Atualizar o nome de um heroi', async () => {
+        const res = await app.inject({
+            method: 'PATCH',
+            url: `/herois/${idHeroi}`,
+            payload: { 
+                nome: 'Ana' 
+            }
+        });
+
+        const statusCode = res.statusCode;
+        const mensagem = JSON.parse(res.payload).mensagem;
+
+        assert.deepStrictEqual(statusCode, 200);
+        assert.ok(mensagem, 'Heroi atualizado com sucesso');
     })
 })

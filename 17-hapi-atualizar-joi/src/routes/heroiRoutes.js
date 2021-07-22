@@ -68,6 +68,31 @@ class HeroiRoutes extends BaseRoute {
             }
         }
     }
+
+    update() {
+        return {
+            path: '/herois/{id}',
+            method: 'PATCH',
+            options: {
+                handler: async (response) => {
+                    try {
+                        const { id } = response.params;
+                        const { payload } = response;
+
+                        const dadosStringfy = JSON.stringify(payload);
+                        const dados = JSON.parse(dadosStringfy);
+
+                        const a = this.db.update(id, dados);
+                        
+                        return { mensagem: 'Heroi atualizado com sucesso' };
+                    } catch (error) {
+                        console.log('Deu ruim:', error);
+                        return "Erro interno do servidor.";
+                    }
+                }
+            }
+        }
+    }
 }
 
 module.exports = HeroiRoutes;
